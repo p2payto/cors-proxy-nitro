@@ -3,11 +3,11 @@ import { ofetch } from 'ofetch'
 
 export default defineEventHandler(async (event) => {
 
-  const { corsTargetUrl, corsProxySecret } = useRuntimeConfig()
+  const { corsTargetUrl, corsProxySecret } = useRuntimeConfig(event)
 
   const apiFetch = ofetch.create({
 
-    baseURL: `https://${corsTargetUrl}`,
+    baseURL: `corsTargetUrl`,
     // force JSON parsing so you always get a JS object, not raw bytes
     responseType: 'json',
     // async onRequest({ request, options }) {

@@ -19,12 +19,16 @@
   },
   "scripts": {
     "dev": "nitro dev",
-    "build": "nitro build",
-    "start": "node .output/server/index.mjs"
+    "build": "nitro build --preset cloudflare-module",
+    "start": "node .output/server/index.mjs",
+    "build:cf": "nitro build --preset cloudflare-module",
+    "dev:cf": "npm run build:cf && wrangler dev .output/server/index.mjs --assets .output/public --compatibility-flag nodejs_compat",
+    "deploy:cf": "npm run build:cf && wrangler deploy .output/server/index.mjs --assets .output/public --name cors-proxy-nitro --keep-vars --compatibility-date 2026-02-10 --compatibility-flag nodejs_compat"
   },
   "dependencies": {
-    "got": "^14.4.0",
-    "nitropack": "^2.9.0",
-    "socks-proxy-agent": "^8.0.5"
+    "nitropack": "latest"
+  },
+  "devDependencies": {
+    "wrangler": "^4.64.0"
   }
 }

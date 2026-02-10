@@ -14,7 +14,8 @@ export default defineNuxtModule({
     enabled: false,
     prefix: '/api/cors-proxy',
     corsProxySecret: undefined,
-    corsTargetUrl: undefined
+    corsTargetUrl: undefined,
+    corsHealthPath: '/'
   },
 
   setup(options, nuxt) {
@@ -24,7 +25,7 @@ export default defineNuxtModule({
     // Map module options -> runtimeConfig (server-only)
     nuxt.options.runtimeConfig.corsProxySecret = options.corsProxySecret
     nuxt.options.runtimeConfig.corsTargetUrl = options.corsTargetUrl
-
+    nuxt.options.runtimeConfig.corsHealthPath = options.corsHealthPath || '/'
     const resolver = createResolver(import.meta.url)
     const prefix = String(options.prefix || '/api/cors-proxy').replace(/\/+$/, '')
 

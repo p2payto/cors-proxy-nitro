@@ -69,9 +69,14 @@ export default defineNuxtConfig({
   corsProxyNitro: {
     enabled: true,
     corsProxySecret: process.env.NUXT_CORS_PROXY_SECRET,
-    corsTargetUrl: process.env.NUXT_CORS_TARGET_URL
+    corsTargetUrl: process.env.NUXT_CORS_TARGET_URL,
+    corsHealthPath: process.env.NUXT_CORS_HEALTH_PATH // Optional. Defaults to '/'
   }
 })
 ```
 Set environment variables as explained in the `.env.example` file.
+
+## Deployment
+
+For manual deployment on cloudflare workers run `npm run deploy:cf`
 

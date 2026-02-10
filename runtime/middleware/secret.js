@@ -2,7 +2,7 @@ import { defineEventHandler, getRequestHeader, setResponseStatus } from 'h3'
 
 export default defineEventHandler((event) => {
 
-  const { corsProxySecret } = useRuntimeConfig()
+  const { corsProxySecret } = useRuntimeConfig(event)
   const incomingSecretHeader = getRequestHeader(event, 'x-cors-proxy-secret')
 
   if (incomingSecretHeader !== corsProxySecret) {
