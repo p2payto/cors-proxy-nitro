@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
 
   const apiFetch = ofetch.create({
 
-    baseURL: `corsTargetUrl`,
+    baseURL: `${corsTargetUrl}`,
     // force JSON parsing so you always get a JS object, not raw bytes
     responseType: 'json',
     // async onRequest({ request, options }) {
